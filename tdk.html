@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ТДК — Технологичные Дома Комфорта</title>
+  <meta name="viewport" content="width=1000, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f7f7f7;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 40px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo-svg {
+      width: 48px;
+      height: 48px;
+      margin-right: 18px;
+      background: #223366;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo-svg span {
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: #fff;
+      letter-spacing: 0.03em;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .brand .tdk {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .brand .desc {
+      font-size: 1rem;
+      color: #777;
+      margin-top: 2px;
+    }
+    nav a {
+      margin-left: 30px;
+      color: #223366;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+      font-size: 1.1rem;
+    }
+    nav a:hover {
+      color: #111;
+    }
+    .hero {
+      text-align: center;
+      padding: 80px 20px 50px 20px;
+      background: #ececec;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      margin-bottom: 32px;
+      color: #333;
+    }
+    .btn-main {
+      background: #223366;
+      color: #fff;
+      padding: 16px 38px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 700;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(34,51,102,0.10);
+      letter-spacing: 0.02em;
+    }
+    .btn-main:hover {
+      background: #1a2749;
+    }
+    .catalog {
+      padding: 50px 0 30px 0;
+      background: #f7f7f7;
+    }
+    .catalog h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 36px;
+    }
+    .cards {
+      display: flex;
+      gap: 38px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+      padding: 20px 24px 28px 24px;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.22s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 30px rgba(34,51,102,0.10);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 17px;
+      min-height: 180px;
+      background: #e0e0e0;
+      object-fit: cover;
+      object-position: center;
+    }
+    .card h3 {
+      font-size: 1.24rem;
+      font-weight: 700;
+      margin-bottom: 7px;
+      text-align: center;
+    }
+    .card .params {
+      color: #666;
+      font-size: 1.02rem;
+      margin-bottom: 7px;
+    }
+    .card .price {
+      color: #223366;
+      font-size: 1.16rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .card .btn {
+      background: none;
+      border: 1.5px solid #223366;
+      color: #223366;
+      padding: 9px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 1.08rem;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .card .btn:hover {
+      background: #223366;
+      color: #fff;
+    }
+    .object-detail {
+      display: flex;
+      gap: 46px;
+      max-width: 900px;
+      margin: 60px auto 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 38px 40px;
+    }
+    .object-detail .photos {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      min-width: 280px;
+      max-width: 340px;
+    }
+    .object-detail .photos img {
+      width: 100%;
+      border-radius: 8px;
+      background: #e0e0e0;
+      object-fit: cover;
+      min-height: 150px;
+      object-position: center;
+    }
+    .object-detail .info {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: center;
+    }
+    .object-detail .info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .object-detail .params {
+      color: #666;
+      font-size: 1.08rem;
+    }
+    .object-detail .price {
+      color: #223366;
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .object-detail .btn-contact {
+      background: #223366;
+      color: #fff;
+      padding: 13px 38px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1.09rem;
+      font-weight: 600;
+      transition: background 0.22s;
+      margin-top: 20px;
+      display: inline-block;
+      width: fit-content;
+    }
+    .object-detail .btn-contact:hover {
+      background: #1a2749;
+    }
+    .about, .contacts {
+      max-width: 850px;
+      margin: 0 auto 60px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      padding: 36px 34px;
+    }
+    .about h2, .contacts h2 {
+      font-size: 1.7rem;
+      margin-bottom: 16px;
+    }
+    .contacts p, .about p {
+      font-size: 1.13rem;
+      color: #333;
+    }
+    @media (max-width: 900px) {
+      .object-detail { flex-direction: column; gap: 18px; padding: 22px 10px;}
+    }
+    @media (max-width: 600px) {
+      header { flex-direction: column; gap: 12px; padding: 10px 8px;}
+      .object-detail, .about, .contacts { padding: 13px 7px;}
+      .catalog .cards { gap: 13px;}
+    }
+  </style>
+  <script>
+    // Для демонстрации "Подробнее" — открывает детальную страницу объекта (заглушка)
+    function showObjectDetail() {
+      document.getElementById('catalog').style.display = 'none';
+      document.getElementById('object-detail').style.display = 'flex';
+      window.scrollTo(0, 0);
+    }
+    function backToCatalog() {
+      document.getElementById('object-detail').style.display = 'none';
+      document.getElementById('catalog').style.display = 'block';
+      window.location.hash = '#catalog';
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-svg">
+      <span>ТДК</span>
+    </div>
+    <div class="brand">
+      <div class="tdk">ТДК</div>
+      <div class="desc">Технологичные Дома Комфорта</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#catalog">Каталог домов</a>
+    <a href="#about">О компании</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Современные дома для жизни и инвестиций</h1>
+  <p>Комфорт. Надежность. Технологии.</p>
+  <a href="#catalog" class="btn-main">Смотреть каталог домов</a>
+</section>
+
+<section id="catalog" class="catalog">
+  <h2>Каталог домов</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="https://via.placeholder.com/320x180?text=Фото+дома" alt="Фото дома">
+      <h3>Долорес</h3>
+      <div class="params">96 м² • 3 комнаты • 1 санузел</div>
+      <div class="price">от 4 523 040 ₽</div>
+      <button class="btn" onclick="showObjectDetail()">Подробнее</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/320x180?text=Фото+дома" alt="Фото дома">
+      <h3>Леонардо</h3>
+      <div class="params">120 м² • 4 комнаты • 2 санузла</div>
+      <div class="price">от 5 900 000 ₽</div>
+      <button class="btn" onclick="showObjectDetail()">Подробнее</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/320x180?text=Фото+дома" alt="Фото дома">
+      <h3>Вилла Арт</h3>
+      <div class="params">160 м² • 5 комнат • 2 санузла</div>
+      <div class="price">от 7 300 000 ₽</div>
+      <button class="btn" onclick="showObjectDetail()">Подробнее</button>
+    </div>
+    <!-- Можно добавить еще -->
+  </div>
+</section>
+
+<!-- Детальная страница объекта (одна для примера) -->
+<section id="object-detail" class="object-detail" style="display:none;">
+  <div class="photos">
+    <img src="https://via.placeholder.com/320x180?text=Фото+дома" alt="Фото дома">
+    <img src="https://via.placeholder.com/320x180?text=Еще+фото" alt="Фото дома">
+  </div>
+  <div class="info">
+    <h2>Долорес</h2>
+    <div class="params">96 м² • 3 комнаты • 1 санузел</div>
+    <div class="price">от 4 523 040 ₽</div>
+    <p>Просторный современный дом для семьи. Грамотная планировка, большие окна, качественные материалы, энергоэффективные технологии. Варианты отделки и комплектации обсуждаются индивидуально.</p>
+    <a href="tel:+79265531165" class="btn-contact">Связаться: +7 926 553 11 65</a>
+    <br><br>
+    <a href="#catalog" onclick="backToCatalog()" class="btn" style="margin-top:10px;">← Вернуться в каталог</a>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>О компании</h2>
+  <p>
+    <b>ТДК — Технологичные Дома Комфорта</b> — строим современные энергоэффективные дома для комфортной жизни и инвестиций.<br><br>
+    Мы используем лучшие материалы, актуальные архитектурные решения и обеспечиваем качество на всех этапах — от проектирования до отделки. Каждый проект можно адаптировать под ваши пожелания.<br><br>
+    <i>Ваш дом — ваша история. Мы поможем сделать её красивой и надежной.</i>
+  </p>
+</section>
+
+<section id="contacts" class="contacts">
+  <h2>Контакты</h2>
+  <p>Телефон: <a href="tel:+79265531165">+7 926 553 11 65</a></p>
+  <!-- Здесь позже добавим остальные контакты -->
+</section>
+
+</body>
+</html>
